@@ -13,11 +13,15 @@ protocol subviewDelegate {
 }
 
 class ViewController: UIViewController, subviewDelegate{
-    
 
     @IBOutlet weak var roadimage: UIImageView!
+
     @IBOutlet weak var mycar: movingvehicle!
     
+    var dynamicAnimator: UIDynamicAnimator!
+    var dynamicItemBehavior: UIDynamicItemBehavior!
+    var collisionbehavior: UICollisionBehavior!
+    var gravitybehavior: UIGravityBehavior!
     
     override func viewDidLoad() {
         
@@ -25,7 +29,10 @@ class ViewController: UIViewController, subviewDelegate{
         mycar.myDelegate = self
         
         var imagearray: ([UIImage])!
-       
+        
+        gravitybehavior = UIGravityBehavior()
+        dynamicItemBehavior = UIDynamicItemBehavior()
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
         imagearray = [UIImage(named: "road1.png")!,
                       UIImage(named: "road2.png")!,
@@ -49,6 +56,13 @@ class ViewController: UIViewController, subviewDelegate{
                       UIImage(named: "road20.png")!,]
         
         roadimage.image = UIImage.animatedImage(with: imagearray, duration: 0.5)
+        
+        let start = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: start) {
+            
+            let delay = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(ViewController.carspawn), userInfo: nil, repeats: true)
+            
+        }
       
     }
 
@@ -57,6 +71,44 @@ class ViewController: UIViewController, subviewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+    func carspawn(){
+        
+        var cararray = ["car1.png", "car2.png", "car3.png", "car4.png", "car5.png"]
+        let randomcar = Int(arc4random_uniform(UInt32(cararray.count))) + 1
+        var shuffled = [String]()
+        let carimageview = UIImageView(image: nil)
+        
+        
+        let lower: UInt32 = 52
+        let upper: UInt32 = 273
+        let randomx = Int(arc4random_uniform(UInt32(upper - lower))) + 52
+        
+        for i in 1...randomcar {
+            let rand = Int(arc4random_uniform(UInt32(cararray.count)))
+            shuffled.append(cararray[rand])
+            cararray.remove(at: rand)
+        }
+        
+        for index in 1...randomcar{
+            
+            // declaring the obstacle cars as an image view.
+            
+            let carimage = UIImage(named: shuffled[index - 1])
+            let carimageview = UIImageView(image: carimage)
+            carimageview.frame = CGRect(x: (randomx * index), y: 0, width: 35, height: 57)
+            self.view.addSubview(carimageview)
+            
+            
+            // adding the gravity behavior into the new array to display more than one obstacle car at the same time.
+            
+            dynamicItemBehavior.addItem(carimageview)
+            
+            self.dynamicItemBehavior.addLinearVelocity(CGPoint(x: 0, y: 300), for: carimageview)
+            
+            dynamicAnimator.addBehavior(dynamicItemBehavior)
+        }
+        
+    }
 
 }
 

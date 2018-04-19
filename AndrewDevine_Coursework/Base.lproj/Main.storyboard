@@ -49,10 +49,17 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="mi8-gw-4YR"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boatside.png" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-yK-lAC">
+                                <rect key="frame" x="-127" y="338" width="129" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="418" height="736"/>
+                    <connections>
+                        <outlet property="boatpass" destination="cxp-yK-lAC" id="5TX-jb-PeA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Es-Vc-to1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -140,6 +147,7 @@
         <image name="GameOver.jpg" width="818" height="432"/>
         <image name="boat.png" width="186" height="659"/>
         <image name="boatescape.png" width="651" height="114"/>
+        <image name="boatside.png" width="533" height="229"/>
         <image name="replay.png" width="605" height="605"/>
         <image name="river1.jpg" width="434" height="914"/>
         <image name="sunny2.jpg" width="415" height="600"/>

@@ -46,6 +46,7 @@
 		8162FEB22042F459009A63A9 /* AndrewDevine_CourseworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8162FEB12042F459009A63A9 /* AndrewDevine_CourseworkTests.swift */; };
 		8162FEBD2042F459009A63A9 /* AndrewDevine_CourseworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8162FEBC2042F459009A63A9 /* AndrewDevine_CourseworkUITests.swift */; };
 		81D56901206934260031064F /* movingvehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D56900206934260031064F /* movingvehicle.swift */; };
+		81F6FC9A2083D27700319CAD /* startscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6FC992083D27700319CAD /* startscreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		8162FEBC2042F459009A63A9 /* AndrewDevine_CourseworkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndrewDevine_CourseworkUITests.swift; sourceTree = "<group>"; };
 		8162FEBE2042F459009A63A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81D56900206934260031064F /* movingvehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = movingvehicle.swift; sourceTree = SOURCE_ROOT; };
+		81F6FC992083D27700319CAD /* startscreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startscreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				81D56900206934260031064F /* movingvehicle.swift */,
 				8162FE9C2042F458009A63A9 /* AppDelegate.swift */,
 				8162FE9E2042F458009A63A9 /* ViewController.swift */,
+				81F6FC992083D27700319CAD /* startscreen.swift */,
 				8162FEA02042F458009A63A9 /* Main.storyboard */,
 				812F7D152086BF8B00A5BC15 /* boat.png */,
 				812F7D162086BF8B00A5BC15 /* boatescape.png */,
@@ -388,6 +391,7 @@
 			files = (
 				8162FE9F2042F458009A63A9 /* ViewController.swift in Sources */,
 				8162FE9D2042F458009A63A9 /* AppDelegate.swift in Sources */,
+				81F6FC9A2083D27700319CAD /* startscreen.swift in Sources */,
 				81D56901206934260031064F /* movingvehicle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

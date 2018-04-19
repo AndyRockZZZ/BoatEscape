@@ -41,6 +41,15 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
         score.text = String(scorenumber)
         viewDidLoad()
     }
+    
+    @objc(collisionBehavior:beganContactForItem:withBoundaryIdentifier:atPoint:) func collisionBehavior(_ behavior: UICollisionBehavior,
+                           beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint){
+        
+        scorenumber = scorenumber - 1
+        score.text = String(scorenumber)
+        finalscore.text = (score.text! + " Points")
+        
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()

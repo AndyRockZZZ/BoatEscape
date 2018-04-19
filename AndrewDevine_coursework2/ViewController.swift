@@ -13,6 +13,9 @@ protocol subviewDelegate {
 }
 
 class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDelegate{
+    
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var gameover: UIImageView!
 
     @IBOutlet weak var roadimage: UIImageView!
 
@@ -22,7 +25,8 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
     var dynamicItemBehavior: UIDynamicItemBehavior!
     var collisionbehavior: UICollisionBehavior!
     var gravitybehavior: UIGravityBehavior!
-    
+
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,6 +36,9 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
         collisionbehavior.collisionDelegate = self
         
         var imagearray: ([UIImage])!
+        self.background.backgroundColor = UIColor.black
+        self.background.isHidden = true
+        self.gameover.isHidden = true
         
         gravitybehavior = UIGravityBehavior()
         dynamicItemBehavior = UIDynamicItemBehavior()
@@ -60,7 +67,23 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
         
         roadimage.image = UIImage.animatedImage(with: imagearray, duration: 0.5)
         
-        let delay = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(ViewController.carspawn), userInfo: nil, repeats: true)
+        let start = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: start) {
+            
+              let delay = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(ViewController.carspawn), userInfo: nil, repeats: true)
+            
+            let finish = DispatchTime.now() + 20
+            DispatchQueue.main.asyncAfter(deadline: finish) {
+                self.background.isHidden = false
+                self.gameover.isHidden = false
+                self.view.bringSubview(toFront: self.gameover)
+                self.view.bringSubview(toFront: self.background)
+                
+                
+                delay.invalidate()
+
+            }
+        }
       
     }
 
@@ -110,6 +133,7 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
             
             collisionbehavior.addItem(carimageview)
             dynamicAnimator.addBehavior(collisionbehavior)
+            
             
             
         }

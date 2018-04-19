@@ -30,6 +30,8 @@ class ViewController: UIViewController, subviewDelegate,
     var dynamicItemBehavior: UIDynamicItemBehavior!
     var collisionbehavior: UICollisionBehavior!
     var gravitybehavior: UIGravityBehavior!
+    var backgroundmusic: AVAudioPlayer?
+    var gameovermusic: AVAudioPlayer?
     
     var count: Int = 0
     var scorenumber = 0
@@ -65,6 +67,17 @@ class ViewController: UIViewController, subviewDelegate,
         collisionbehavior.addBoundary(withIdentifier: "Barrier" as NSCopying, for: UIBezierPath(rect: boat.frame))
         collisionbehavior.collisionDelegate = self
         screenwidth = screensize.width
+        
+        let path = Bundle.main.path(forResource: "music1.mp3", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        //let durationCheck = 20 * timesReplayed
+        do{
+            self.backgroundmusic = try AVAudioPlayer(contentsOf: url)
+            self.backgroundmusic?.play()
+            //backgroundmusic?.currentTime = TimeInterval(durationCheck >= 399 ? 0 : 20 * timesReplayed)
+        }catch{
+            //couldn't load file :(
+        }
         
         var riverimages: ([UIImage])!
         self.background.backgroundColor = UIColor.blue
@@ -117,11 +130,25 @@ class ViewController: UIViewController, subviewDelegate,
                 self.scoretitle.isHidden = true
                 self.finalscore.isHidden = false
                 self.replaybutton.isHidden = false
-                
+                 
+                self.backgroundmusic?.stop()
                 self.view.bringSubview(toFront: self.background)
                 self.view.bringSubview(toFront: self.gameover)
                 self.view.bringSubview(toFront: self.replaybutton)
                 self.view.bringSubview(toFront: self.finalscore)
+                
+                if(self.scorenumber < 0){
+                    let path = Bundle.main.path(forResource: "SadTrombone .mp3", ofType: nil)!
+                    let url = URL(fileURLWithPath: path)
+                    //let durationCheck = 20 * timesReplayed
+                    do{
+                        self.gameovermusic = try AVAudioPlayer(contentsOf: url)
+                        self.gameovermusic?.play()
+                        
+                    }catch{
+                        //couldn't load file :(
+                    }
+                }
                 
                 delay.invalidate()
                 for vehicle in self.obstacle{

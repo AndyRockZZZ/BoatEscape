@@ -8,20 +8,24 @@
 
 import UIKit
 
+protocol subviewDelegate {
+    
+}
 
-
-class ViewController: UIViewController{
+class ViewController: UIViewController, subviewDelegate{
+    
 
     @IBOutlet weak var roadimage: UIImageView!
     @IBOutlet weak var mycar: movingvehicle!
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        mycar.myDelegate = self
         
         var imagearray: ([UIImage])!
-        
-        
+       
         
         imagearray = [UIImage(named: "road1.png")!,
                       UIImage(named: "road2.png")!,
@@ -45,15 +49,13 @@ class ViewController: UIViewController{
                       UIImage(named: "road20.png")!,]
         
         roadimage.image = UIImage.animatedImage(with: imagearray, duration: 0.5)
-        
-        
+      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 
 }

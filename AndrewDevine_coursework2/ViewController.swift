@@ -15,12 +15,14 @@ protocol subviewDelegate {
 class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDelegate{
     
     @IBOutlet weak var background: UIImageView!
-    
+    @IBOutlet weak var scoretitle: UILabel!
     @IBOutlet weak var gameover: UIImageView!
 
     @IBOutlet weak var roadimage: UIImageView!
 
     @IBOutlet weak var replaybutton: UIButton!
+    @IBOutlet weak var finalscore: UILabel!
+    @IBOutlet weak var score: UILabel!
     @IBOutlet weak var mycar: movingvehicle!
     
     var dynamicAnimator: UIDynamicAnimator!
@@ -28,9 +30,15 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
     var collisionbehavior: UICollisionBehavior!
     var gravitybehavior: UIGravityBehavior!
     
+    var count: Int = 0
+    var scorenumber = 0
+    
     var obstacle: [UIImageView] = []
     
     @IBAction func replay() {
+        count = 0
+        scorenumber = 0
+        score.text = String(scorenumber)
         viewDidLoad()
     }
     override func viewDidLoad() {
@@ -46,6 +54,8 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
         self.replaybutton.isHidden = true
         self.background.isHidden = true
         self.gameover.isHidden = true
+        self.scoretitle.isHidden = false
+        self.finalscore.isHidden = true
         
         gravitybehavior = UIGravityBehavior()
         dynamicItemBehavior = UIDynamicItemBehavior()
@@ -84,10 +94,12 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
                 self.background.isHidden = false
                 self.mycar.isHidden = false
                 self.gameover.isHidden = false
+                self.scoretitle.isHidden = true
+                self.finalscore.isHidden = false
                 self.replaybutton.isHidden = false
-                
                 self.view.bringSubview(toFront: self.gameover)
                 self.view.bringSubview(toFront: self.background)
+                self.view.bringSubview(toFront: self.finalscore)
                 self.view.bringSubview(toFront: self.replaybutton)
                 
                 delay.invalidate()
@@ -109,46 +121,58 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
     
     func carspawn(){
         
-        var cararray = ["car1.png", "car2.png", "car3.png", "car4.png", "car5.png"]
-        let randomcar = Int(arc4random_uniform(UInt32(cararray.count))) + 1
-        var shuffled = [String]()
-        let carimageview = UIImageView(image: nil)
-        
-        
-        let lower: UInt32 = 52
-        let upper: UInt32 = 273
-        let randomx = Int(arc4random_uniform(UInt32(upper - lower))) + 52
-        
-        for i in 1...randomcar {
-            let rand = Int(arc4random_uniform(UInt32(cararray.count)))
-            shuffled.append(cararray[rand])
-            cararray.remove(at: rand)
-        }
-        
-        for index in 1...randomcar{
-            
-            // declaring the obstacle cars as an image view.
-            
-            let carimage = UIImage(named: shuffled[index - 1])
-            let carimageview = UIImageView(image: carimage)
-            carimageview.frame = CGRect(x: (randomx * index), y: 0, width: 35, height: 57)
-            self.view.addSubview(carimageview)
-            obstacle.append(carimageview)
+        if (count < 13){
+            var cararray = ["car1.png", "car2.png", "car3.png", "car4.png", "car5.png"]
+            let randomcar = Int(arc4random_uniform(UInt32(cararray.count))) + 1
+            var shuffled = [String]()
+            let carimageview = UIImageView(image: nil)
             
             
-            // adding the gravity behavior into the new array to display more than one obstacle car at the same time.
+            let lower: UInt32 = 52
+            let upper: UInt32 = 273
+            let randomx = Int(arc4random_uniform(UInt32(upper - lower))) + 52
             
-            dynamicItemBehavior.addItem(carimageview)
+            for i in 1...randomcar {
+                let rand = Int(arc4random_uniform(UInt32(cararray.count)))
+                shuffled.append(cararray[rand])
+                cararray.remove(at: rand)
+            }
             
-            self.dynamicItemBehavior.addLinearVelocity(CGPoint(x: 0, y: 300), for: carimageview)
+            for index in 1...randomcar{
+                
+                // declaring the obstacle cars as an image view.
+                
+                let carimage = UIImage(named: shuffled[index - 1])
+                let carimageview = UIImageView(image: carimage)
+                carimageview.frame = CGRect(x: (randomx * index), y: 0, width: 35, height: 57)
+                self.view.addSubview(carimageview)
+                obstacle.append(carimageview)
+                
+                
+                // adding the gravity behavior into the new array to display more than one obstacle car at the same time.
+                
+                dynamicItemBehavior.addItem(carimageview)
+               
+                self.dynamicItemBehavior.addLinearVelocity(CGPoint(x: 0, y: 300), for: carimageview)
+                
+                dynamicAnimator.addBehavior(dynamicItemBehavior)
+                
+                // collision behaviour with the delay of the main car and obstacle cars to crash.
+                
+                collisionbehavior.addItem(carimageview)
+                dynamicAnimator.addBehavior(collisionbehavior)
             
-            dynamicAnimator.addBehavior(dynamicItemBehavior)
+            }
             
-            // collision behaviour with the delay of the main car and obstacle cars to crash.
             
-            collisionbehavior.addItem(carimageview)
-            dynamicAnimator.addBehavior(collisionbehavior)
+            scorenumber = scorenumber + Int(shuffled.count * 5);
+            score.text = String(scorenumber)
+            finalscore.text = (score.text! + " Points")
             
+            print(count)
+            print("Car Number: ", randomcar)
+            print("Score result: ", scorenumber)
+            count = count + 1
         }
         
     }

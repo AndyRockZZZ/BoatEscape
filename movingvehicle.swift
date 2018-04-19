@@ -8,10 +8,11 @@
 
 import UIKit
 
-class movingvehicle: UIImageView {
+class movingvehicle: UIImageView{
     
     var startlocation: CGPoint?
     var myDelegate: subviewDelegate?
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -26,8 +27,8 @@ class movingvehicle: UIImageView {
         let dy = currentlocation!.y - startlocation!.y
         
         self.center = CGPoint(x: self.center.x+dx, y: self.center.y+dy)
-        
         self.myDelegate?.changesomething()
+        
     }
 
     /*

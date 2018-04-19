@@ -25,16 +25,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="car0.png" translatesAutoresizingMaskIntoConstraints="NO" id="gTA-oM-Nu7" customClass="movingvehicle" customModule="AndrewDevine_coursework2" customModuleProvider="target">
-                                <rect key="frame" x="59" y="536" width="40" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game_over.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="zx5-gN-qlO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="261"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z2j-9K-bcl">
                                 <rect key="frame" x="0.0" y="259" width="375" height="408"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Zs-4E-Onz">
+                                <rect key="frame" x="107" y="421" width="177" height="167"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="replay.png"/>
+                                <connections>
+                                    <action selector="replay" destination="BYZ-38-t0r" eventType="touchUpInside" id="gyw-WO-dHM"/>
+                                </connections>
+                            </button>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="car0.png" translatesAutoresizingMaskIntoConstraints="NO" id="gTA-oM-Nu7" customClass="movingvehicle" customModule="AndrewDevine_coursework2" customModuleProvider="target">
+                                <rect key="frame" x="59" y="536" width="40" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -44,6 +52,7 @@
                         <outlet property="background" destination="Z2j-9K-bcl" id="8jX-hE-kEJ"/>
                         <outlet property="gameover" destination="zx5-gN-qlO" id="ilX-Ef-7aV"/>
                         <outlet property="mycar" destination="gTA-oM-Nu7" id="bRo-or-ZCz"/>
+                        <outlet property="replaybutton" destination="7Zs-4E-Onz" id="Xhp-sX-GpB"/>
                         <outlet property="roadimage" destination="Mbg-KM-7Kq" id="Fxn-2R-Ef7"/>
                     </connections>
                 </viewController>
@@ -55,6 +64,7 @@
     <resources>
         <image name="car0.png" width="382" height="757"/>
         <image name="game_over.jpg" width="450" height="338"/>
+        <image name="replay.png" width="894" height="894"/>
         <image name="road6.png" width="433" height="914"/>
     </resources>
 </document>

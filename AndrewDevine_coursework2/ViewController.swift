@@ -15,18 +15,24 @@ protocol subviewDelegate {
 class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDelegate{
     
     @IBOutlet weak var background: UIImageView!
+    
     @IBOutlet weak var gameover: UIImageView!
 
     @IBOutlet weak var roadimage: UIImageView!
 
+    @IBOutlet weak var replaybutton: UIButton!
     @IBOutlet weak var mycar: movingvehicle!
     
     var dynamicAnimator: UIDynamicAnimator!
     var dynamicItemBehavior: UIDynamicItemBehavior!
     var collisionbehavior: UICollisionBehavior!
     var gravitybehavior: UIGravityBehavior!
-
-
+    
+    var obstacle: [UIImageView] = []
+    
+    @IBAction func replay() {
+        viewDidLoad()
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -37,6 +43,7 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
         
         var imagearray: ([UIImage])!
         self.background.backgroundColor = UIColor.black
+        self.replaybutton.isHidden = true
         self.background.isHidden = true
         self.gameover.isHidden = true
         
@@ -75,12 +82,20 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
             let finish = DispatchTime.now() + 20
             DispatchQueue.main.asyncAfter(deadline: finish) {
                 self.background.isHidden = false
+                self.mycar.isHidden = false
                 self.gameover.isHidden = false
+                self.replaybutton.isHidden = false
+                
                 self.view.bringSubview(toFront: self.gameover)
                 self.view.bringSubview(toFront: self.background)
-                
+                self.view.bringSubview(toFront: self.replaybutton)
                 
                 delay.invalidate()
+                for vehicle in self.obstacle{
+                    self.collisionbehavior.removeItem(vehicle)
+                    vehicle.removeFromSuperview()
+                    
+                }
 
             }
         }
@@ -93,7 +108,6 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
     }
     
     func carspawn(){
-        
         
         var cararray = ["car1.png", "car2.png", "car3.png", "car4.png", "car5.png"]
         let randomcar = Int(arc4random_uniform(UInt32(cararray.count))) + 1
@@ -119,6 +133,7 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
             let carimageview = UIImageView(image: carimage)
             carimageview.frame = CGRect(x: (randomx * index), y: 0, width: 35, height: 57)
             self.view.addSubview(carimageview)
+            obstacle.append(carimageview)
             
             
             // adding the gravity behavior into the new array to display more than one obstacle car at the same time.
@@ -133,8 +148,6 @@ class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDele
             
             collisionbehavior.addItem(carimageview)
             dynamicAnimator.addBehavior(collisionbehavior)
-            
-            
             
         }
         

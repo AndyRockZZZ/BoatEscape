@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		812F7D182086BF8B00A5BC15 /* boat.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D152086BF8B00A5BC15 /* boat.png */; };
+		812F7D192086BF8B00A5BC15 /* boatescape.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D162086BF8B00A5BC15 /* boatescape.png */; };
 		812F7D1A2086BF8B00A5BC15 /* boatside.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D172086BF8B00A5BC15 /* boatside.png */; };
 		812F7D382086BFB400A5BC15 /* buoy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D1B2086BFB400A5BC15 /* buoy.gif */; };
 		812F7D392086BFB400A5BC15 /* buoy2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D1C2086BFB400A5BC15 /* buoy2.gif */; };
@@ -37,6 +38,7 @@
 		812F7D512086BFB400A5BC15 /* river19.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D342086BFB400A5BC15 /* river19.jpg */; };
 		812F7D522086BFB400A5BC15 /* river20.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D352086BFB400A5BC15 /* river20.jpg */; };
 		812F7D532086BFB400A5BC15 /* SadTrombone .mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D362086BFB400A5BC15 /* SadTrombone .mp3 */; };
+		812F7D562086C2A600A5BC15 /* sunny2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812F7D552086C2A600A5BC15 /* sunny2.jpg */; };
 		8162FE9D2042F458009A63A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8162FE9C2042F458009A63A9 /* AppDelegate.swift */; };
 		8162FE9F2042F458009A63A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8162FE9E2042F458009A63A9 /* ViewController.swift */; };
 		8162FEA22042F458009A63A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8162FEA02042F458009A63A9 /* Main.storyboard */; };
@@ -65,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		812F7D152086BF8B00A5BC15 /* boat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boat.png; path = ../boat.png; sourceTree = "<group>"; };
+		812F7D162086BF8B00A5BC15 /* boatescape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boatescape.png; path = ../boatescape.png; sourceTree = "<group>"; };
 		812F7D172086BF8B00A5BC15 /* boatside.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boatside.png; path = ../boatside.png; sourceTree = "<group>"; };
 		812F7D1B2086BFB400A5BC15 /* buoy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = buoy.gif; path = ../buoy.gif; sourceTree = "<group>"; };
 		812F7D1C2086BFB400A5BC15 /* buoy2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = buoy2.gif; path = ../buoy2.gif; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		812F7D342086BFB400A5BC15 /* river19.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = river19.jpg; path = ../river19.jpg; sourceTree = "<group>"; };
 		812F7D352086BFB400A5BC15 /* river20.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = river20.jpg; path = ../river20.jpg; sourceTree = "<group>"; };
 		812F7D362086BFB400A5BC15 /* SadTrombone .mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "SadTrombone .mp3"; path = "../SadTrombone .mp3"; sourceTree = "<group>"; };
+		812F7D552086C2A600A5BC15 /* sunny2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sunny2.jpg; path = ../sunny2.jpg; sourceTree = "<group>"; };
 		8162FE992042F458009A63A9 /* AndrewDevine_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndrewDevine_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8162FE9C2042F458009A63A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8162FE9E2042F458009A63A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				8162FE9E2042F458009A63A9 /* ViewController.swift */,
 				8162FEA02042F458009A63A9 /* Main.storyboard */,
 				812F7D152086BF8B00A5BC15 /* boat.png */,
+				812F7D162086BF8B00A5BC15 /* boatescape.png */,
 				812F7D172086BF8B00A5BC15 /* boatside.png */,
 				812F7D1B2086BFB400A5BC15 /* buoy.gif */,
 				812F7D1C2086BFB400A5BC15 /* buoy2.gif */,
@@ -191,6 +196,7 @@
 				812F7D342086BFB400A5BC15 /* river19.jpg */,
 				812F7D352086BFB400A5BC15 /* river20.jpg */,
 				812F7D362086BFB400A5BC15 /* SadTrombone .mp3 */,
+				812F7D552086C2A600A5BC15 /* sunny2.jpg */,
 				8162FEA32042F458009A63A9 /* Assets.xcassets */,
 				8162FEA82042F458009A63A9 /* Info.plist */,
 			);
@@ -324,6 +330,7 @@
 			files = (
 				812F7D472086BFB400A5BC15 /* river9.jpg in Resources */,
 				812F7D4F2086BFB400A5BC15 /* river17.jpg in Resources */,
+				812F7D192086BF8B00A5BC15 /* boatescape.png in Resources */,
 				812F7D3D2086BFB400A5BC15 /* music1.mp3 in Resources */,
 				812F7D522086BFB400A5BC15 /* river20.jpg in Resources */,
 				812F7D512086BFB400A5BC15 /* river19.jpg in Resources */,
@@ -345,6 +352,7 @@
 				812F7D402086BFB400A5BC15 /* river2.jpg in Resources */,
 				812F7D532086BFB400A5BC15 /* SadTrombone .mp3 in Resources */,
 				8162FEA22042F458009A63A9 /* Main.storyboard in Resources */,
+				812F7D562086C2A600A5BC15 /* sunny2.jpg in Resources */,
 				812F7D462086BFB400A5BC15 /* river8.jpg in Resources */,
 				812F7D182086BF8B00A5BC15 /* boat.png in Resources */,
 				812F7D3A2086BFB400A5BC15 /* buoy3.gif in Resources */,

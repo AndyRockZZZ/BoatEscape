@@ -25,15 +25,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="car0.png" translatesAutoresizingMaskIntoConstraints="NO" id="77q-Tb-Giy" customClass="movingvehicle" customModule="AndrewDevine_coursework2" customModuleProvider="target">
-                                <rect key="frame" x="62" y="523" width="57" height="92"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="car0.png" translatesAutoresizingMaskIntoConstraints="NO" id="DO4-9B-Kpp" customClass="movingvehicle" customModule="AndrewDevine_coursework2" customModuleProvider="target">
+                                <rect key="frame" x="63" y="509" width="48" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="mycar" destination="77q-Tb-Giy" id="1Uu-IY-6X7"/>
+                        <outlet property="mycar" destination="DO4-9B-Kpp" id="jgl-qj-fpQ"/>
                         <outlet property="roadimage" destination="Mbg-KM-7Kq" id="Fxn-2R-Ef7"/>
                     </connections>
                 </viewController>

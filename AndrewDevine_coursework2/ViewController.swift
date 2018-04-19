@@ -9,10 +9,10 @@
 import UIKit
 
 protocol subviewDelegate {
-    
+    func changesomething()
 }
 
-class ViewController: UIViewController, subviewDelegate{
+class ViewController: UIViewController, subviewDelegate, UICollisionBehaviorDelegate{
 
     @IBOutlet weak var roadimage: UIImageView!
 
@@ -27,6 +27,9 @@ class ViewController: UIViewController, subviewDelegate{
         
         super.viewDidLoad()
         mycar.myDelegate = self
+        collisionbehavior = UICollisionBehavior()
+        collisionbehavior.addBoundary(withIdentifier: "Barrier" as NSCopying, for: UIBezierPath(rect: mycar.frame))
+        collisionbehavior.collisionDelegate = self
         
         var imagearray: ([UIImage])!
         
@@ -57,12 +60,7 @@ class ViewController: UIViewController, subviewDelegate{
         
         roadimage.image = UIImage.animatedImage(with: imagearray, duration: 0.5)
         
-        let start = DispatchTime.now() + 1
-        DispatchQueue.main.asyncAfter(deadline: start) {
-            
-            let delay = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(ViewController.carspawn), userInfo: nil, repeats: true)
-            
-        }
+        let delay = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(ViewController.carspawn), userInfo: nil, repeats: true)
       
     }
 
@@ -72,6 +70,7 @@ class ViewController: UIViewController, subviewDelegate{
     }
     
     func carspawn(){
+        
         
         var cararray = ["car1.png", "car2.png", "car3.png", "car4.png", "car5.png"]
         let randomcar = Int(arc4random_uniform(UInt32(cararray.count))) + 1
@@ -106,9 +105,21 @@ class ViewController: UIViewController, subviewDelegate{
             self.dynamicItemBehavior.addLinearVelocity(CGPoint(x: 0, y: 300), for: carimageview)
             
             dynamicAnimator.addBehavior(dynamicItemBehavior)
+            
+            // collision behaviour with the delay of the main car and obstacle cars to crash.
+            
+            collisionbehavior.addItem(carimageview)
+            dynamicAnimator.addBehavior(collisionbehavior)
+            
+            
         }
         
     }
 
+    func changesomething() {
+        
+        collisionbehavior.removeAllBoundaries()
+        collisionbehavior.addBoundary(withIdentifier: "Barrier" as NSCopying, for: UIBezierPath(rect: mycar.frame))
+    }
 }
 

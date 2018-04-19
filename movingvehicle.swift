@@ -27,6 +27,7 @@ class movingvehicle: UIImageView {
         
         self.center = CGPoint(x: self.center.x+dx, y: self.center.y+dy)
         
+        self.myDelegate?.changesomething()
     }
 
     /*
